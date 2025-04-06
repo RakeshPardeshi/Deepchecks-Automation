@@ -1,0 +1,22 @@
+
+---
+
+### **6️⃣ Add Tests (`test_psi.py`)**
+Create `tests/test_psi.py`:
+
+```python
+import unittest
+import numpy as np
+from psi_calculator import psi
+
+class TestPSI(unittest.TestCase):
+    def test_psi(self):
+        expected = np.random.normal(50, 10, 1000)
+        actual = np.random.normal(55, 12, 1000)
+        result = psi(expected, actual, bins=10, method="equal_freq")
+        self.assertIsInstance(result, dict)
+        self.assertIn("Final PSI", result)
+        self.assertGreaterEqual(result["Final PSI"], 0)
+
+if __name__ == "__main__":
+    unittest.main()
